@@ -35,7 +35,7 @@ export default function Home() {
 				<Header />
 
 				{/* Main Content */}
-				<div className="flex justify-center w-full px-6 mt-4 mb-[74px]">
+				<div className="flex justify-center w-full px-6 mt-3 mb-[74px]">
 					{renderScreen()}
 				</div>
 

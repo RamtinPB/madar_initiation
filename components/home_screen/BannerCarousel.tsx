@@ -24,7 +24,7 @@ export function BannerCarousel() {
 		<div className="relative w-full h-[147px]">
 			{/* CAROUSEL */}
 			<Carousel
-				className="w-full h-[147px] border-2 border-black shadow-lg rounded-xl overflow-hidden"
+				className="w-full h-[147px] border-2 border-white shadow-lg rounded-xl overflow-hidden"
 				opts={{
 					align: "center",
 					loop: true,

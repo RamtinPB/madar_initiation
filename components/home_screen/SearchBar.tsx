@@ -9,7 +9,7 @@ export default function SearchBar() {
 	return (
 		<InputGroup className="w-full h-[40px] rounded-xl">
 			<InputGroupInput
-				className="p-0 text-[#DDDCDB] font-medium text-sm"
+				className="p-0 placeholder:text-[#DDDCDB] placeholder:font-medium placeholder:text-base"
 				placeholder="جستجو"
 			/>
 			<InputGroupAddon className="!pr-2">
