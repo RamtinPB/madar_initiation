@@ -24,7 +24,7 @@ export default function NavItem({
 		>
 			{/* ACTIVE INDICATOR */}
 			{active && (
-				<ActiveIndicatorIcon className="absolute -top-[18px] left-1/2 -translate-x-1/2 text-[#FF6A29] w-[34px]! h-1!" />
+				<ActiveIndicatorIcon className="absolute -top-[18.6px] left-1/2 -translate-x-1/2 text-[#FF6A29] w-9! h-1!" />
 			)}
 
 			{/* ICON */}
