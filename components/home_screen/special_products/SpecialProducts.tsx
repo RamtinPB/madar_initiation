@@ -12,7 +12,7 @@ import { products } from "./ProductData";
 
 export default function SpecialProducts() {
 	return (
-		<section className="mt-4 flex flex-col gap-2">
+		<section className="mt-4 flex flex-col gap-5">
 			{/* HEADER */}
 			<header className="flex items-center justify-between">
 				<h1 className="text-base font-bold text-[#BA400B]">محصولات ویژه</h1>

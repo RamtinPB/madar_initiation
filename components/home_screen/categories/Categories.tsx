@@ -59,7 +59,7 @@ const CATEGORIES = [
 
 export default function Categories() {
 	return (
-		<div className="flex flex-col gap-1">
+		<div className="flex flex-col gap-5">
 			{/* HEADER */}
 			<div className="flex items-center justify-between">
 				<h1 className="text-base font-bold text-[#BA400B]">دسته بندی ها</h1>
