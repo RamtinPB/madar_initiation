@@ -1,7 +1,7 @@
 import SearchBar from "../home_screen/SearchBar";
 import { BannerCarousel } from "../home_screen/BannerCarousel";
 import CountdownAd from "../home_screen/CountdownAd";
-import Categories from "../home_screen/Categories";
+import Categories from "../home_screen/categories/Categories";
 import SpecialProducts from "../home_screen/special_products/SpecialProducts";
 import WatchAd from "../home_screen/WatchAd";
 

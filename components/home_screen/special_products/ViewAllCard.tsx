@@ -1,13 +1,35 @@
-import ArrowLeft from "@/public/assets/home_screen/special_products/arrow.png";
-import Image from "next/image";
+"use client";
 
-export default function ViewAllCard() {
+import Image, { type StaticImageData } from "next/image";
+import ArrowLeft from "@/public/assets/home_screen/special_products/arrow.png";
+
+/* ------------------------------------------------------------
+ * TYPES
+ * ------------------------------------------------------------ */
+interface ViewAllCardProps {
+	onClick?: () => void;
+}
+
+/* ------------------------------------------------------------
+ * VIEW ALL CARD
+ * Last card in SpecialProducts — navigates user to full list.
+ * ------------------------------------------------------------ */
+export default function ViewAllCard({ onClick }: ViewAllCardProps) {
 	return (
-		<button className="w-[156px] h-[299px] border rounded-xl flex flex-col items-center justify-center shadow-sm bg-white">
+		<button
+			onClick={onClick}
+			className="
+				flex h-[299px] w-[156px]
+				flex-col items-center justify-center
+				rounded-xl border bg-white shadow-sm
+				transition-all duration-150
+				hover:bg-zinc-50 active:scale-95
+			"
+		>
 			<Image
-				src={ArrowLeft}
+				src={ArrowLeft as StaticImageData}
 				alt="مشاهده همه محصولات"
-				className="w-[74px] h-[64px] text-[#C15323]"
+				className="h-[64px] w-[74px]"
 			/>
 		</button>
 	);

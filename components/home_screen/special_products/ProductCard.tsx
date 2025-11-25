@@ -1,14 +1,22 @@
-import Image from "next/image";
+"use client";
+
+import Image, { type StaticImageData } from "next/image";
 import { Button } from "@/components/ui/button";
 
-interface ProductCardProps {
-	image: any;
+/* ------------------------------------------------------------
+ * TYPES
+ * ------------------------------------------------------------ */
+export interface ProductCardProps {
+	image: StaticImageData;
 	title: string;
 	discount?: number;
 	oldPrice?: string;
 	newPrice: string;
 }
 
+/* ------------------------------------------------------------
+ * PRODUCT CARD COMPONENT
+ * ------------------------------------------------------------ */
 export default function ProductCard({
 	image,
 	title,
@@ -17,44 +25,47 @@ export default function ProductCard({
 	newPrice,
 }: ProductCardProps) {
 	return (
-		<div className="w-[156px] h-[299px] rounded-t-[12px] rounded-b-[20px] border flex flex-col shadow-sm text-wrap bg-white">
+		<div className="flex h-[299px] w-[156px] flex-col rounded-t-[12px] rounded-b-[20px] border bg-white text-wrap shadow-sm">
 			{/* IMAGE */}
-			<div className="relative w-[144px] h-[144px] m-2">
+			<div className="relative m-2 h-[144px] w-[144px]">
 				<Image
 					src={image}
 					alt={title}
 					fill
 					sizes="(max-width: 768px) 100vw, 50vw"
-					className="object-cover rounded-lg"
+					className="rounded-lg object-cover"
 				/>
 			</div>
 
 			{/* TITLE */}
-			<span className="my-1 mx-2 text-[12px] font-medium text-[#4F4C4B] leading-18px">
+			<p className="mx-2 my-1 text-[12px] font-medium leading-[18px] text-[#4F4C4B]">
 				{title}
-			</span>
+			</p>
 
-			{/* DISCOUNT AREA */}
+			{/* DISCOUNT ROW */}
 			{discount && oldPrice && (
-				<div className="flex items-center justify-start mt-1 mx-2 gap-1.5">
-					<div className="flex items-center justify-start text-[10px] line-through font-medium text-[#787471]">
+				<div className="mx-2 mt-1 flex items-center gap-1.5">
+					{/* OLD PRICE */}
+					<div className="flex items-center text-[10px] font-medium text-[#787471] line-through">
 						<span>{oldPrice}</span>
-						<span>تومان</span>
+						<span className="mr-1">تومان</span>
 					</div>
-					<span className="text-[9px] font-normal text-white rounded-[20px] py-[2px] px-1 bg-[#C50F1F]">
+
+					{/* DISCOUNT BADGE */}
+					<span className="rounded-[20px] bg-[#C50F1F] px-1 py-[2px] text-[9px] font-normal text-white">
 						%{discount}
 					</span>
 				</div>
 			)}
 
 			{/* NEW PRICE */}
-			<div className="flex items-center justify-start mt-1 mx-2 gap-1.5 text-[14px] font-bold text-[#BA400B] ">
+			<div className="mx-2 mt-1 flex items-center gap-1.5 text-[14px] font-bold text-[#BA400B]">
 				<span>{newPrice}</span>
 				<span>تومان</span>
 			</div>
 
-			{/* BUTTON */}
-			<Button className="w-full mt-auto p-2 h-[32px] bg-[#F5F2EF] rounded-[20px] text-[16px] font-medium text-[#787471]">
+			{/* ADD-TO-CART BUTTON */}
+			<Button className="mt-auto h-[32px] w-full rounded-[20px] bg-[#F5F2EF] p-2 text-[16px] font-medium text-[#787471]">
 				افزودن به سبد
 			</Button>
 		</div>

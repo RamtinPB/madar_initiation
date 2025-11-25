@@ -1,97 +1,46 @@
+"use client";
+
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import ProductCard from "./ProductCard";
 import ViewAllCard from "./ViewAllCard";
 
-import ShoppingCart from "@/public/assets/home_screen/special_products/Cart.png";
-import MachhiatoCafe from "@/public/assets/home_screen/special_products/machhiato.png";
-import OliveOil from "@/public/assets/home_screen/special_products/olive_oil.png";
-import Qharaqhorum from "@/public/assets/home_screen/special_products/qh.png";
+import { products } from "./ProductData";
+
+/* ------------------------------------------------------------
+ *  SPECIAL PRODUCTS SECTION
+ * ------------------------------------------------------------ */
 
 export default function SpecialProducts() {
-	// --- PRODUCT LIST ---
-	const products = [
-		{
-			image: OliveOil,
-			title: "روغن زیتون بکر کریستال - 5 لیتر ",
-			discount: 10,
-			oldPrice: "40,000",
-			newPrice: "3,700,000",
-		},
-		{
-			image: Qharaqhorum,
-			title: "کشک قره قروتی ممتاز حس خوب - 500 گرم",
-			discount: 10,
-			oldPrice: "40,000",
-			newPrice: "3,700,000",
-		},
-		{
-			image: ShoppingCart,
-			title: "روغن زیتون بکر کریستال - 5 لیتر ",
-			discount: 10,
-			oldPrice: "40,000",
-			newPrice: "3,700,000",
-		},
-		{
-			image: Qharaqhorum,
-			title: "کشک قره قروتی ممتاز حس خوب - 500 گرم",
-			discount: 10,
-			oldPrice: "40,000",
-			newPrice: "3,700,000",
-		},
-		{
-			image: OliveOil,
-			title: "روغن زیتون بکر کریستال - 5 لیتر ",
-			discount: 10,
-			oldPrice: "40,000",
-			newPrice: "3,700,000",
-		},
-		{
-			image: MachhiatoCafe,
-			title: "پودر ماکیاتو ونزکافه - 25 گرم بسته 20 عددی",
-			discount: 22,
-			oldPrice: "365,000",
-			newPrice: "292,900",
-		},
-		{
-			image: ShoppingCart,
-			title: "روغن زیتون بکر کریستال - 5 لیتر ",
-			discount: 10,
-			oldPrice: "40,000",
-			newPrice: "3,700,000",
-		},
-	];
-
 	return (
-		<div className="flex flex-col gap-2 mt-4">
+		<section className="mt-4 flex flex-col gap-2">
 			{/* HEADER */}
-			<div className="flex flex-row justify-between items-center">
-				<h1 className="text-[#BA400B] font-bold text-base">محصولات ویژه</h1>
-				<span className="text-[#C15323] font-medium text-base">
+			<header className="flex items-center justify-between">
+				<h1 className="text-base font-bold text-[#BA400B]">محصولات ویژه</h1>
+
+				<span className="text-base font-medium text-[#C15323]">
 					بهترین پیشنهادات روز
 				</span>
-			</div>
+			</header>
 
-			{/* CONTENT */}
-			<ScrollArea className="w-full whitespace-nowrap pb-2" dir="rtl">
+			{/* CONTENT GRID (SCROLLABLE) */}
+			<ScrollArea dir="rtl" className="w-full whitespace-nowrap pb-2">
 				<div className="grid grid-flow-col grid-rows-2 auto-cols-[156px] gap-3">
-					{/* LOOPED PRODUCT CARDS */}
-					{products.map((product, index) => (
+					{products.map((p, i) => (
 						<ProductCard
-							key={index}
-							image={product.image}
-							title={product.title}
-							discount={product.discount}
-							oldPrice={product.oldPrice}
-							newPrice={product.newPrice}
+							key={i}
+							image={p.image}
+							title={p.title}
+							discount={p.discount}
+							oldPrice={p.oldPrice}
+							newPrice={p.newPrice}
 						/>
 					))}
 
-					{/* LAST ITEM */}
+					{/* FINAL ITEM */}
 					<ViewAllCard />
 				</div>
-
 				<ScrollBar orientation="horizontal" className="hidden" />
 			</ScrollArea>
-		</div>
+		</section>
 	);
 }

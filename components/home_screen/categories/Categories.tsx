@@ -1,5 +1,10 @@
-import Image from "next/image";
+"use client";
 
+import CategoryItem from "./CategoryItem";
+
+/* ------------------------------------------------------------
+ * CATEGORY ICON IMPORTS
+ * ------------------------------------------------------------ */
 import Accecories from "@/public/assets/home_screen/categories/Accessories.png";
 import Additives from "@/public/assets/home_screen/categories/Additives.png";
 import BackedGoods from "@/public/assets/home_screen/categories/BackedGoods.png";
@@ -21,14 +26,18 @@ import Refrigerated from "@/public/assets/home_screen/categories/Refrigerated.pn
 import Snacks from "@/public/assets/home_screen/categories/Snacks.png";
 import WritingSupplies from "@/public/assets/home_screen/categories/Writing supplies.png";
 
-const categories = [
+/* ------------------------------------------------------------
+ * CATEGORY LIST (DATA MODEL)
+ * Ideally moved to a constants file if reused elsewhere.
+ * ------------------------------------------------------------ */
+const CATEGORIES = [
 	{ icon: Accecories, label: "لوازم‌جانبی" },
 	{ icon: Disposable, label: "یکبار مصرف" },
 	{ icon: Health, label: "سلامت" },
 	{ icon: WritingSupplies, label: "لوازم تحریر" },
 	{ icon: Additives, label: "افزودنی ها" },
 	{ icon: DriedFruitsNSweets, label: "خشکبار، شیرینی" },
-	{ icon: Canned, label: "کنسروی و  آماده" },
+	{ icon: Canned, label: "کنسروی و آماده" },
 	{ icon: Snacks, label: "تنقلات" },
 	{ icon: Refrigerated, label: "منجمد، یخچالی" },
 	{ icon: Cosmetics, label: "آرایشی بهداشتی" },
@@ -44,44 +53,25 @@ const categories = [
 	{ icon: FruitsNVegetables, label: "میوه، سبزیجات" },
 ];
 
-interface CategoryItemProps {
-	icon: any;
-	label: string;
-}
-
-function CategoryItem({ icon, label }: CategoryItemProps) {
-	return (
-		<div className="flex flex-col items-center">
-			<div className="w-[73px] h-[76px] bg-gradient-to-b from-[#FFF7F5] to-[#FFEBE5] rounded-xl flex items-center justify-center shadow-xs">
-				{/* FIXED SIZE CONTAINER */}
-				<div className="relative w-[53px] h-[53px] overflow-hidden rounded-lg">
-					<Image
-						src={icon}
-						alt={label}
-						fill
-						sizes="(max-width: 768px) 100vw, 50vw"
-						className="object-contain"
-					/>
-				</div>
-			</div>
-
-			<span className="text-[12px] text-center mt-1 text-[#333]">{label}</span>
-		</div>
-	);
-}
+/* ------------------------------------------------------------
+ * MAIN CATEGORIES COMPONENT
+ * ------------------------------------------------------------ */
 
 export default function Categories() {
 	return (
 		<div className="flex flex-col gap-1">
-			<div className="flex flex-row justify-between items-center">
-				<h1 className="text-[#BA400B] font-bold text-base">دسته بندی ها</h1>
-				<span className="text-[#C15323] font-medium text-base">
+			{/* HEADER */}
+			<div className="flex items-center justify-between">
+				<h1 className="text-base font-bold text-[#BA400B]">دسته بندی ها</h1>
+				<span className="text-base font-medium text-[#C15323]">
 					انتخاب سریع محصولات
 				</span>
 			</div>
-			<div className="grid grid-cols-4 gap-4 mt-1">
-				{categories.map((cat, index) => (
-					<CategoryItem key={index} icon={cat.icon} label={cat.label} />
+
+			{/* GRID */}
+			<div className="mt-1 grid grid-cols-4 gap-4">
+				{CATEGORIES.map((cat) => (
+					<CategoryItem key={cat.label} icon={cat.icon} label={cat.label} />
 				))}
 			</div>
 		</div>
