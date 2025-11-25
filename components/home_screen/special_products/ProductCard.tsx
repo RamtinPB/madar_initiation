@@ -48,7 +48,7 @@ export default function ProductCard({
 					{/* OLD PRICE */}
 					<div className="flex items-center text-[10px] font-medium text-[#787471] line-through">
 						<span>{oldPrice}</span>
-						<span className="mr-1">تومان</span>
+						<span>تومان</span>
 					</div>
 
 					{/* DISCOUNT BADGE */}
