@@ -1,26 +1,33 @@
 import { Button } from "@/components/ui/button";
 
+// SVG Icons (imported as React components via SVGR)
 import Logo from "@/public/assets/header/logo.svg";
-import Right_ArrowIcon from "@/public/assets/header/right_arrow.svg";
+import RightArrowIcon from "@/public/assets/header/right_arrow.svg";
 import BasketIcon from "@/public/assets/header/basket.svg";
-import Image from "next/image";
 
 export function Header() {
 	return (
-		<header className="flex items-center justify-between h-[72px] px-6 w-full border-b">
-			{/* LEFT */}
-			<div className="flex items-center  min-w-[92px] h-[32px] gap-1">
+		<header className="flex h-[72px] w-full items-center justify-between border-b px-6">
+			{/* --------------------------------------------------------
+			 * LEFT SECTION
+			 * - Navigation back arrow
+			 * - Center-aligned logo
+			 * -------------------------------------------------------- */}
+			<div className="flex h-[32px] min-w-[92px] items-center gap-1">
 				<Button variant="ghost" className="h-[32px] w-[32px] p-0">
-					<Right_ArrowIcon alt="Arrow" className="!h-[32px] !w-[32px]" />
+					<RightArrowIcon className="!h-[32px] !w-[32px]" />
 				</Button>
 
-				<Logo alt="Logo" className="w-full h-full" />
+				<Logo className="h-full w-full" />
 			</div>
 
-			{/* RIGHT */}
+			{/* --------------------------------------------------------
+			 * RIGHT SECTION
+			 * - Basket button
+			 * -------------------------------------------------------- */}
 			<div>
-				<Button variant="outline" className="border-2 w-[40px] h-[40px] p-0">
-					<BasketIcon className="!w-5 !h-5 text-[#B3B2B2]" />
+				<Button variant="outline" className="h-[40px] w-[40px] p-0 border-2">
+					<BasketIcon className="!h-5 !w-5 text-[#B3B2B2]" />
 				</Button>
 			</div>
 		</header>

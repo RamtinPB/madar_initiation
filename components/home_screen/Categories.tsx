@@ -55,7 +55,13 @@ function CategoryItem({ icon, label }: CategoryItemProps) {
 			<div className="w-[73px] h-[76px] bg-gradient-to-b from-[#FFF7F5] to-[#FFEBE5] rounded-xl flex items-center justify-center shadow-xs">
 				{/* FIXED SIZE CONTAINER */}
 				<div className="relative w-[53px] h-[53px] overflow-hidden rounded-lg">
-					<Image src={icon} alt={label} fill className="object-contain" />
+					<Image
+						src={icon}
+						alt={label}
+						fill
+						sizes="(max-width: 768px) 100vw, 50vw"
+						className="object-contain"
+					/>
 				</div>
 			</div>
 

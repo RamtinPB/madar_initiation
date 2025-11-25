@@ -24,6 +24,7 @@ export default function ProductCard({
 					src={image}
 					alt={title}
 					fill
+					sizes="(max-width: 768px) 100vw, 50vw"
 					className="object-cover rounded-lg"
 				/>
 			</div>

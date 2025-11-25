@@ -10,10 +10,10 @@ import {
 import Image from "next/image";
 import { useState } from "react";
 
-import banner1 from "@/public/assets/home_screen/special_products/Cart.png";
-import banner2 from "@/public/assets/home_screen/special_products/machhiato.png";
-import banner3 from "@/public/assets/home_screen/special_products/olive_oil.png";
-import banner4 from "@/public/assets/home_screen/special_products/qh.png";
+import banner1 from "@/public/assets/home_screen/carousel/frame.png";
+import banner2 from "@/public/assets/home_screen/carousel/frame.png";
+import banner3 from "@/public/assets/home_screen/carousel/frame.png";
+import banner4 from "@/public/assets/home_screen/carousel/frame.png";
 
 export function BannerCarousel() {
 	const banners = [banner1, banner2, banner3, banner4];
@@ -21,21 +21,21 @@ export function BannerCarousel() {
 	const [currentIndex, setCurrentIndex] = useState(0);
 
 	return (
-		<div className="relative w-full h-[147px]">
+		<div className="relative w-full h-[147px] ">
 			{/* CAROUSEL */}
 			<Carousel
 				className="w-full h-[147px] border-2 border-white shadow-lg rounded-xl overflow-hidden"
 				opts={{
 					align: "center",
 					loop: true,
-					startIndex: banners.length - 1,
+					startIndex: 0,
 				}}
 				setApi={(api) => {
 					if (!api) return;
 
 					const updateIndex = () => {
 						const idx = api.selectedScrollSnap();
-						setCurrentIndex(banners.length - 1 - idx);
+						setCurrentIndex(idx);
 					};
 
 					// Initial update AFTER embla is fully ready
@@ -47,15 +47,9 @@ export function BannerCarousel() {
 			>
 				<CarouselContent>
 					{banners.map((banner, index) => (
-						<CarouselItem key={index} className="w-full h-[147px]">
-							<div className="relative w-full h-full">
-								<Image
-									src={banner}
-									alt={`banner-${index}`}
-									fill
-									className="rounded-xl object-scale-down"
-									priority
-								/>
+						<CarouselItem key={index} className="relative  h-[147px] w-full ">
+							<div className="relative w-full h-full rounded-xl ">
+								<Image src={banner} alt={`banner-${index}`} fill priority />
 							</div>
 						</CarouselItem>
 					))}
@@ -69,8 +63,8 @@ export function BannerCarousel() {
 						key={index}
 						className={
 							index === currentIndex
-								? "w-[16px] h-[6px] bg-gray-600 rounded-full transition-all"
-								: "w-[6px] h-[6px] bg-gray-500 rounded-full transition-all"
+								? "w-[16px] h-[6px] bg-gradient-to-b from-[#FFFFFF] to-[#D79BC8] rounded-full transition-all"
+								: "w-[6px] h-[6px] bg-[#FFFFFF] opacity-20 rounded-full transition-all"
 						}
 					/>
 				))}
