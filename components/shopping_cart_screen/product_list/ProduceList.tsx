@@ -18,7 +18,7 @@ import CustomSpinner from "../CustomSpinner";
 
 export default function ProduceList() {
 	return (
-		<section className="mt-4 flex flex-col gap-5">
+		<section className="flex flex-col gap-5">
 			<header className="flex items-center justify-between">
 				<Select dir="rtl">
 					<SelectTrigger className="border-[#F5F2EF]! rounded-xl">
