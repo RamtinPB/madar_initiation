@@ -16,8 +16,7 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import ShoppingCart from "@/public/assets/home_screen/special_products/Cart.png";
 import CustomSpinner from "../CustomSpinner";
 import { useState } from "react";
-import ProductDrawer from "./ProductSheet";
-import ProductSheet from "./ProductSheet";
+import ProductSheet from "./product_sheet/ProductSheet";
 
 export default function ProduceList() {
 	const [selectedProduct, setSelectedProduct] =

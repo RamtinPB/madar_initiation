@@ -23,7 +23,12 @@ export default function HomeScreen() {
 			<SearchBar />
 
 			{/* Banner Carousel */}
-			<BannerCarousel height="147" banners={banners} imageObject="cover" />
+			<BannerCarousel
+				height="147"
+				banners={banners}
+				imageObject="cover"
+				shadowAmount="lg"
+			/>
 
 			{/* Timer-Based Ad */}
 			<CountdownAd />

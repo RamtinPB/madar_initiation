@@ -14,12 +14,14 @@ interface BannerCarouselProps {
 	height: string;
 	banners: StaticImageData[];
 	imageObject: string;
+	shadowAmount: string;
 }
 
 export function BannerCarousel({
 	height,
 	banners,
 	imageObject,
+	shadowAmount,
 }: BannerCarouselProps) {
 	const [currentIndex, setCurrentIndex] = useState(4);
 
@@ -37,7 +39,7 @@ export function BannerCarousel({
 					const originalIndex = banners.length - 1 - reversedIndex;
 					setCurrentIndex(originalIndex);
 				}}
-				className={`w-full h-full border-2 border-white shadow-lg rounded-xl`}
+				className={`w-full h-full border-2 border-white bg-white shadow-${shadowAmount} rounded-xl`}
 			>
 				{[...banners].reverse().map((banner, reverseIndex) => {
 					const originalIndex = banners.length - 1 - reverseIndex;
