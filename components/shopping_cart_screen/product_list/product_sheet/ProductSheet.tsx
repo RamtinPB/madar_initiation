@@ -85,7 +85,6 @@ export default function ProductSheet({
 							className={`
               rounded-md w-2/3 h-full text-white bg-[#FF6A29]
             `}
-							onClick={() => router.push("/")}
 						>
 							افزودن به سبد خرید
 						</Button>
