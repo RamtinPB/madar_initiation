@@ -33,7 +33,6 @@ export default function ProductSheet({
 	product,
 }: ProductSheetProps) {
 	if (!product) return null;
-	const router = useRouter();
 
 	return (
 		<Sheet open={open} onOpenChange={onOpenChange}>
