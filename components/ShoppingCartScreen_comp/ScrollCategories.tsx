@@ -1,4 +1,4 @@
-import CategoryItem from "../home_screen/categories/CategoryItem";
+import CategoryItem from "../HomeScreen_comp/Categories_comp/CategoryItem";
 
 /* ------------------------------------------------------------
  * CATEGORY ICON IMPORTS

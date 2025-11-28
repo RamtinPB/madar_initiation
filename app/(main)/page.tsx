@@ -3,14 +3,14 @@
 import { useMemo, useState } from "react";
 import type { ReactElement } from "react";
 
-import { Header } from "@/components/header";
-import { Footer } from "@/components/footer/footer";
+import { Header } from "@/components/Header_comp/header";
+import { Footer } from "@/components/Footer_comp/footer";
 
 // Screens
-import HomeScreen from "@/components/screens/home_screen";
-import OrdersScreen from "@/components/screens/orders_screen";
-import ProfileScreen from "@/components/screens/profile_screen";
-import ShoppingCartScreen from "@/components/screens/shopping_cart_screen";
+import HomeScreen from "@/components/Screens_comp/home_screen";
+import OrdersScreen from "@/components/Screens_comp/orders_screen";
+import ProfileScreen from "@/components/Screens_comp/profile_screen";
+import ShoppingCartScreen from "@/components/Screens_comp/shopping_cart_screen";
 
 /* ------------------------------------------------------------
  * TYPES

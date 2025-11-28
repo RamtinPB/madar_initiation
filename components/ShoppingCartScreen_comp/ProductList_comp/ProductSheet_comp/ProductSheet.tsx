@@ -2,7 +2,7 @@
 
 import { Sheet, SheetContent, SheetTitle } from "@/components/ui/sheet";
 import { StaticImageData } from "next/image";
-import { BannerCarousel } from "@/components/home_screen/BannerCarousel";
+import { BannerCarousel } from "@/components/HomeScreen_comp/BannerCarousel";
 import ProductSheetCard from "./ProductSheetCard";
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
@@ -50,7 +50,6 @@ export default function ProductSheet({
 			>
 				<div className=" flex flex-col gap-3">
 					<BannerCarousel
-						height="147"
 						banners={product.image ? [product.image] : []}
 						imageObject="contain"
 						shadowAmount="none"

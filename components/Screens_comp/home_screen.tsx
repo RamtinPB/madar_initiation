@@ -1,9 +1,9 @@
-import SearchBar from "../home_screen/SearchBar";
-import { BannerCarousel } from "../home_screen/BannerCarousel";
-import CountdownAd from "../home_screen/CountdownAd";
-import Categories from "../home_screen/categories/Categories";
-import SpecialProducts from "../home_screen/special_products/SpecialProducts";
-import WatchAd from "../home_screen/WatchAd";
+import SearchBar from "../HomeScreen_comp/SearchBar";
+import { BannerCarousel } from "../HomeScreen_comp/BannerCarousel";
+import CountdownAd from "../HomeScreen_comp/CountdownAd";
+import Categories from "../HomeScreen_comp/Categories_comp/Categories";
+import SpecialProducts from "../HomeScreen_comp/SpecialProducts_comp/SpecialProducts";
+import WatchAd from "../HomeScreen_comp/WatchAd";
 
 import banner1 from "@/public/assets/home_screen/carousel/frame.png";
 import banner2 from "@/public/assets/home_screen/carousel/frame.png";
@@ -23,12 +23,7 @@ export default function HomeScreen() {
 			<SearchBar />
 
 			{/* Banner Carousel */}
-			<BannerCarousel
-				height="147"
-				banners={banners}
-				imageObject="cover"
-				shadowAmount="lg"
-			/>
+			<BannerCarousel banners={banners} imageObject="cover" shadowAmount="lg" />
 
 			{/* Timer-Based Ad */}
 			<CountdownAd />

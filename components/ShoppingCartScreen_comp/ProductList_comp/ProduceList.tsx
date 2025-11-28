@@ -10,13 +10,15 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from "../../ui/select";
-import ProduceListCard, { ProduceListCardProps } from "./ProduceListCard";
-import { products } from "@/components/home_screen/special_products/ProductData";
+import ProduceListCard, {
+	ProduceListCardProps,
+} from "./ProductListCard_comp/ProduceListCard";
+import { products } from "@/components/HomeScreen_comp/SpecialProducts_comp/ProductData";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 import ShoppingCart from "@/public/assets/home_screen/special_products/Cart.png";
 import CustomSpinner from "../CustomSpinner";
 import { useState } from "react";
-import ProductSheet from "./product_sheet/ProductSheet";
+import ProductSheet from "./ProductSheet_comp/ProductSheet";
 
 export default function ProduceList() {
 	const [selectedProduct, setSelectedProduct] =

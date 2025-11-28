@@ -11,14 +11,12 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 interface BannerCarouselProps {
-	height: string;
 	banners: StaticImageData[];
 	imageObject: string;
 	shadowAmount: string;
 }
 
 export function BannerCarousel({
-	height,
 	banners,
 	imageObject,
 	shadowAmount,
