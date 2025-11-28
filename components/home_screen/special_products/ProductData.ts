@@ -27,23 +27,7 @@ export const products = [
 	},
 	{
 		image: undefined,
-		title: "روغن زیتون بکر کریستال - 5 لیتر ",
-		discount: 10,
-		oldPrice: "40,000",
-		newPrice: "3,700,000",
-		sponsorPrice: undefined,
-	},
-	{
-		image: Qharaqhorum,
-		title: "کشک قره قروتی ممتاز حس خوب - 500 گرم",
-		discount: 10,
-		oldPrice: "40,000",
-		newPrice: "3,700,000",
-		sponsorPrice: undefined,
-	},
-	{
-		image: OliveOil,
-		title: "روغن زیتون بکر کریستال - 5 لیتر ",
+		title: "چای سیاه دست‌چین لاهیجان – 500 گرم",
 		discount: 10,
 		oldPrice: "40,000",
 		newPrice: "3,700,000",
@@ -59,7 +43,7 @@ export const products = [
 	},
 	{
 		image: Cheese,
-		title: "روغن زیتون بکر کریستال - 5 لیتر ",
+		title: "پنیر فتا دوشه هراز مقدار 300 گرم",
 		discount: undefined,
 		oldPrice: undefined,
 		newPrice: "3,700,000",

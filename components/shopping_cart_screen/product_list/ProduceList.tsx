@@ -57,7 +57,7 @@ export default function ProduceList() {
 				<div className="flex flex-col items-center gap-3">
 					{products.map((p, i) => (
 						<div
-							key={i}
+							key={p.title}
 							onClick={() => {
 								setSelectedProduct(p);
 								setDrawerOpen(true);

@@ -34,9 +34,9 @@ export default function ProduceListCard({
 	sponsorPrice,
 	onCardClick,
 }: ProduceListCardProps) {
-	const [count, setCount] = useState(0);
-	const inCart = count > 0;
 	const setItemCount = useCartStore((s) => s.setItemCount);
+	const count = useCartStore((s) => s.items[title] ?? 0);
+	const inCart = count > 0;
 
 	return (
 		<Card
@@ -84,7 +84,6 @@ export default function ProduceListCard({
 									onClick={(e) => {
 										e.stopPropagation(); // prevent parent click
 										const updated = 1;
-										setCount(updated);
 										setItemCount(title, updated);
 									}}
 									className=" h-10 rounded-[20px] bg-[#F5F2EF] p-4 text-[16px] font-medium text-[#787471]"
@@ -100,7 +99,6 @@ export default function ProduceListCard({
 								>
 									<Button
 										onClick={() => {
-											setCount(0);
 											setItemCount(title, 0);
 										}}
 										className="bg-transparent"
@@ -111,7 +109,6 @@ export default function ProduceListCard({
 									<Button
 										onClick={() => {
 											const updated = count + 1;
-											setCount(updated);
 											setItemCount(title, updated);
 										}}
 										className="bg-transparent"
