@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 
 import LoginLeft from "@/public/assets/login/login_left.png";
@@ -37,6 +38,9 @@ export default function LoginPage() {
 	} = useLoginStages();
 
 	const { timeLeft, resendDisabled, reset } = useOTPCountdown(stage === 1);
+
+	const [visibleOtp, setVisibleOtp] = useState<string | null>(null);
+	const [otpError, setOtpError] = useState<string | null>(null);
 
 	/* ------------------------------------------------------------
 	 * RENDER
@@ -79,9 +83,62 @@ export default function LoginPage() {
 								: "bg-[#FFD1B8] opacity-60"
 						}`}
 						disabled={stage === 0 ? !isValidPhone : !isValidCode}
-						onClick={() => {
-							if (stage === 0) setStage(1);
-							else router.push("/"); // submit / continue
+						onClick={async () => {
+							const API_BASE =
+								process.env.NEXT_PUBLIC_API_BASE ?? "http://localhost:4000";
+
+							if (stage === 0) {
+								// request OTP
+								try {
+									const resp = await fetch(`${API_BASE}/auth/request-OTP`, {
+										method: "POST",
+										headers: { "Content-Type": "application/json" },
+										body: JSON.stringify({ phoneNumber: phone }),
+									});
+									if (!resp.ok) throw new Error("Failed to request OTP");
+									const { otp } = await resp.json();
+									setVisibleOtp(otp);
+									setOtpError(null);
+									reset();
+									setStage(1);
+								} catch (err) {
+									console.error(err);
+								}
+							} else {
+								// verify OTP (login)
+								try {
+									const resp = await fetch(`${API_BASE}/auth/login`, {
+										method: "POST",
+										headers: { "Content-Type": "application/json" },
+										body: JSON.stringify({
+											phoneNumber: phone,
+											code: code.join(""),
+										}),
+									});
+									const data = await resp.json();
+									if (!resp.ok) {
+										setOtpError(data?.error || "کد اشتباه است");
+										return;
+									}
+									// backend now returns { user, token } where token is a signed JWT
+									const { user, token } = data;
+									// store JWT (main auth mechanism)
+									localStorage.setItem("token", token);
+									localStorage.setItem("user", JSON.stringify(user));
+									setOtpError(null);
+									if (
+										user?.role === "SUPER_ADMIN" ||
+										user?.role === "SUB_ADMIN"
+									) {
+										router.push("/admin");
+									} else {
+										router.push("/");
+									}
+								} catch (err) {
+									console.error(err);
+									setOtpError("خطا در ورود");
+								}
+							}
 						}}
 					>
 						{stage === 0 ? "ادامه" : "تایید"}
@@ -94,8 +151,35 @@ export default function LoginPage() {
 							timeLeft={formatTime(timeLeft)}
 							resendDisabled={resendDisabled}
 							editPhone={() => setStage(0)}
-							resend={reset}
+							resend={async () => {
+								const API_BASE =
+									process.env.NEXT_PUBLIC_API_BASE ?? "http://localhost:4000";
+								try {
+									const resp = await fetch(`${API_BASE}/auth/request-OTP`, {
+										method: "POST",
+										headers: { "Content-Type": "application/json" },
+										body: JSON.stringify({ phoneNumber: phone }),
+									});
+									if (!resp.ok) throw new Error("Failed to request OTP");
+									const { otp } = await resp.json();
+									setVisibleOtp(otp);
+									reset();
+								} catch (err) {
+									console.error(err);
+								}
+							}}
 						/>
+					)}
+
+					{visibleOtp && (
+						<div className="mt-3 w-full text-center text-sm text-[#0b0b0b] bg-[#FFF7E6] border border-[#FFE5B4] rounded py-2">
+							کد (برای تست):{" "}
+							<span className="font-mono text-lg">{visibleOtp}</span>
+						</div>
+					)}
+
+					{otpError && (
+						<div className="mt-2 text-right text-red-600">{otpError}</div>
 					)}
 				</div>
 			</main>

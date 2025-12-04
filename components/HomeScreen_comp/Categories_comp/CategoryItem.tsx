@@ -1,7 +1,5 @@
 "use client";
 
-import Image, { type StaticImageData } from "next/image";
-
 import CheckMark from "@/public/assets/shopping_cart_screen/CheckMark.svg";
 
 /* ------------------------------------------------------------
@@ -9,7 +7,7 @@ import CheckMark from "@/public/assets/shopping_cart_screen/CheckMark.svg";
  * ------------------------------------------------------------ */
 
 export interface CategoryItemProps {
-	icon: StaticImageData;
+	icon: string;
 	label: string;
 	active?: boolean;
 	onclick?: () => void;
@@ -42,12 +40,10 @@ export default function CategoryItem({
 			>
 				{/* Uniform icon sizing */}
 				<div className="relative h-[53px] w-[53px] overflow-hidden">
-					<Image
+					<img
 						src={icon}
 						alt={label}
-						fill
-						className="object-contain"
-						sizes="(max-width: 768px) 100vw, 50vw"
+						className="h-full w-full object-contain"
 					/>
 				</div>
 			</div>

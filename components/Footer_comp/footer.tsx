@@ -6,11 +6,13 @@ import ReceiptIcon from "@/public/assets/footer/receipt.svg";
 import BasketIcon from "@/public/assets/header/basket.svg";
 import ProfileIcon from "@/public/assets/footer/profile.svg";
 
-type TabKey = "home" | "orders" | "profile" | "basket";
+type TabKey = "home" | "orders" | "profile" | "basket" | "admin";
+
+type NavTab = Exclude<TabKey, "admin">;
 
 interface FooterProps {
-	activeTab: TabKey;
-	onChangeTab: (tab: TabKey) => void;
+	activeTab: NavTab;
+	onChangeTab: (tab: NavTab) => void;
 }
 
 /* ------------------------------------------------------------
@@ -39,6 +41,8 @@ export function Footer({ activeTab, onChangeTab }: FooterProps) {
 					onClick={() => {
 						if (item.tab === "profile") {
 							router.push("/login"); // 🔥 Go to login page
+						} else if (item.tab === "admin") {
+							router.push("/");
 						} else {
 							onChangeTab(item.tab); // normal tab switching
 						}
